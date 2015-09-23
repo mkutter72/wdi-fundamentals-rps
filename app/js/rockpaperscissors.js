@@ -67,19 +67,34 @@ function getWinner(playerMove,computerMove) {
     return winner;
 }
 
+function playOneGame() {
+    var player = getPlayerMove(player);
+    var computer = getComputerMove(computer);
+    console.log("Player:" + player);
+    console.log("Computer:" + computer);
+    var winner = getWinner(player,computer);
+    console.log("The Winner is: " + winner);
+    return winner;
+}
+
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+    while ((playerWins < 5) && (computerWins < 5)) {
+	var winner = playOneGame();
+	if (winner == "computer")
+	    ++computerWins;
+	else if (winner == "player")
+	    ++playerWins;
+
+	console.log("Score card player: " + playerWins + " computer: " + computerWins);
+	console.log(" ");
+    }
+   
     return [playerWins, computerWins];
 }
 
-var player;
-var computer;
-player = getPlayerMove(player);
-computer = getComputerMove(computer);
-console.log("Player:" + player);
-console.log("Computer:" + computer);
-console.log("The Winner is: " + getWinner(player,computer));
+
+playToFive();
